@@ -1,14 +1,10 @@
 {% for tag in product.tags %}
-
-	{%if tag contains 'affiliate'%}
-   
-		{% assign isAffiliateProduct = true %}
-		{% assign tag_split = tag | split:"_" %}
-		{% assign affiliateLink = tag_split[1] %}
-  
-	
+	  {%if tag contains 'affiliate'%}
+		    {% assign isAffiliateProduct = true %}
+		{% assign affiliateLink = tag | split:"_" | last %}
 	{% endif %}
 {% endfor %}
+
 <div class="product-template__container page-width"
   id="ProductSection-{{ section.id }}"
   data-section-id="{{ section.id }}"
