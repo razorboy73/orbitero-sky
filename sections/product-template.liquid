@@ -4,7 +4,6 @@
 		{% assign affiliateLink = tag | split:"_" | last %}
 	{% endif %}
 {% endfor %}
-
 <div class="product-template__container page-width"
   id="ProductSection-{{ section.id }}"
   data-section-id="{{ section.id }}"
@@ -254,7 +253,7 @@
                   {% endif %}
 
                   {% else %}
-                  <a data-add-to-cart class="btn btn product-form__cart-submit btn--secondary-accent" href="{{affiliateLink}}" target="_blank"> See on Amazon</a>
+                  <a data-add-to-cart class="btn btn product-form__cart-submit btn--secondary-accent" href="{{affiliateLink}}" target="_blank">{{'customizations.affiliate_page.amazon_btn' | t}}</a>
 
                 {% endunless %} 
 
