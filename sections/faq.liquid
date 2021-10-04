@@ -18,7 +18,7 @@
     {% if block.type =='QA'%}
         <div class="question">
             <input type="checkbox" id="question-{{forloop.index}}" class="question-toggle">
-            <label for="question-{{forloop.index}}" class="question-label">{{block.settings.title}}</label>
+            <label for="question-{{forloop.index}}" class="question-label">{{block.settings.question}}</label>
             <div class="answer">
 			{{block.settings.answer}}
             </div>
@@ -48,8 +48,8 @@
             "settings":[
                 {
                     "type": "text",
-                    "label":"customer questions",
-                    "id": "title"
+                    "label":"Customer Question",
+                    "id": "question"
                 },
                 {
                     "type": "richtext",
