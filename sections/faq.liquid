@@ -1,9 +1,36 @@
 <h1>{{section.settings.heading}}</h1>
-<h3>{{section.settings.question}}</h3> 
-<p>{{section.settings.answer}}</p>
 
 
+{% comment %} {% for block in section.blocks%}
+ {% if block.type =='QA'%}
+<h3>{{block.settings.title}}</h3> 
+<p>{{block.settings.answer}}</p>
+ {% elsif block.type=='headline'%}
+ <h1>{{block.settings.title}}</h1>
 
+ {% endif %}
+
+{% endfor %} {% endcomment %}
+
+<div class="faq">
+
+{% for block in section.blocks%}
+    {% if block.type =='QA'%}
+        <div class="question">
+            <input type="checkbox" id="question-{{forloop.index}}" class="question-toggle">
+            <label for="question-{{forloop.index}}" class="question-label">{{block.settings.title}}</label>
+            <div class="answer">
+			{{block.settings.answer}}
+            </div>
+        </div>
+    {% elsif block.type=='headline'%}
+        <h4>{{block.settings.title}}</h4>
+    {% endif %}
+
+{% endfor %}
+
+
+ 
 {% schema %}
 {
     "name": "Customer Questions",
@@ -12,18 +39,36 @@
             "type": "text",
             "label":"heading for FAQ",
             "id":"heading"
-        },
-        {
-            "type": "text",
-            "label":"customer questions",
-            "id": "question"
-        },
-        {
-            "type": "textarea",
-            "label":"Answer for FAQ",
-            "id":"answer"
         }
-    ] 
-}
+    ],
+    "blocks":[
+        {
+            "type":"QA",
+            "name":"Question/answer",
+            "settings":[
+                {
+                    "type": "text",
+                    "label":"customer questions",
+                    "id": "title"
+                },
+                {
+                    "type": "richtext",
+                    "label":"Answer for FAQ",
+                    "id":"answer"
+                }
+            ]
+        },
+        {
+            "type": "headline",
+            "name": "headline",
+            "settings":[
+                {"type":"text",
+                "label":"headline",
+                "id":"title"
+                }
+            ]
+        }
+    ]
+}  
 
-{% endschema %} 
+{% endschema %}  
