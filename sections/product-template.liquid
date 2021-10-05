@@ -290,8 +290,48 @@
         >
         </div>
 
-        <div class="product-single__description rte">
-          {{ product.description }}
+        <div class="rte">
+        
+
+        <div class="container">
+          <div class="selector">
+            <div class="tab tab-active">
+              Description
+            </div>
+            {% unless product.metafields.details==blank %}
+            <div class="tab">
+              Details
+            </div>
+             {% endunless %}
+             
+            <div class="tab">
+              Shipping
+            </div>
+          </div>
+          <div class="content">
+            <div id="Description" class="content-body show-active">
+             {{ product.description }}
+            </div>
+            {% unless product.metafields.details==blank %}
+            <div id="Details" class="content-body">
+              
+              <table>
+              <tr><td>Package Dimensions</td><td>{{product.metafields.details.package_dimensions}}</td></tr>
+              <tr><td>Voltage</td><td>{{product.metafields.details.voltage}}</td></tr>
+              <tr><td>Frequency</td><td>{{product.metafields.details.frequency}}</td></tr>
+              <tr><td>Wattage</td><td>{{product.metafields.details.wattage}}</td></tr>
+              </table>
+
+            </div>
+            {% endunless %}
+            <div id="Shipping" class="content-body">
+              <p>Your order will be shipped the same, or next, business day. During sale events and holidays, there may
+                be a slightly longer duration</p>
+            </div>
+          </div>
+        </div>
+
+        
         </div>
 
         {% if section.settings.show_share_buttons %}
